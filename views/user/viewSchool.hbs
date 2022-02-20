@@ -1,0 +1,38 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end m-3">
+{{#each data}}
+  <a
+    type="button"
+    href="addStudent?id={{this._id}}"
+    class="btn btn-primary btn-lg m-3 right-3 text-right fs-6"
+  >Add Student</a>
+</div>
+  <div class="d-grid gap-5 d-md-flex">
+    <span><p>Name : {{this.name}}</p></span><span><p>District :
+        {{this.district}}</p></span>
+  </div>
+{{/each}}
+<div class="m-5">
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Item 1</th>
+        <th scope="col">Item 2</th>
+        <th scope="col">Item 3</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each student}}
+      <tr>
+        <th>{{this.name}}</th>
+        <th>{{this.category}}</th>
+        <td>{{this.item1.item}}</td>
+        <td>{{this.item2.item}}</td>
+        <td>{{this.item3.item}}</td>
+      </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+</div>

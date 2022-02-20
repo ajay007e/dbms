@@ -1,0 +1,42 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end m-3">
+  {{#each data}}
+  <a
+    type="button"
+    href="edit?id={{this._id}}"
+    class="btn btn-primary btn-lg m-3 right-3 text-right fs-6"
+  >Edit Item Details</a>
+</div>
+<div class="d-grid gap-5 d-md-flex">
+    <span><p>Name : {{this.name}}</p></span>
+    <span><p>Category : {{this.category}}</p></span>
+    <span><p>Status : {{this.status}}</p></span>
+    <span><p>Type : {{this.type}}</p></span>
+    <span><p>Stage : {{this.stage}}</p></span>
+    <span><p>Start At : {{this.start}}</p></span>
+    <span><p>Maximum Time : {{this.time}} Minutes</p></span>
+    <span><p>Maximum Participants : {{this.participant}}</p></span>
+  {{/each}}
+</div>
+<div class="m-5">
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">School</th>
+        <th scope="col">Grade</th>
+        <th scope="col">Position</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each student}}
+      <tr>
+        <th scope="row">{{this.name}}</th>
+        <td>{{this.school}}</td>
+        <td>{{this.data.grade}}</td>
+        <td>{{this.data.position}}</td>
+      </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+</div>

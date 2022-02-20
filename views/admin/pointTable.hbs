@@ -1,0 +1,35 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end m-3">
+  <a
+    type="button"
+    href="pointTable/add"
+    class="btn btn-primary btn-lg m-3 right-3 text-right fs-6"
+  >Add New Point Data</a>
+
+</div>
+
+<div class="m-5">
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Position</th>
+        <th scope="col">Grade</th>
+        <th scope="col">Point</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each data}}
+        <tr>
+          <th>{{this.position}}</th>
+          <td>{{this.grade}}</td>
+          <td>{{this.point}}</td>
+          <td><a
+              href="pointTable/delete?id={{this._id}}"
+              type="button"
+              class="btn btn-danger"
+            >Delete</a></td>
+        </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,47 @@
+<div class="d-grid gap-2 d-md-flex justify-content-md-end m-3">
+  <a
+    type="button"
+    href="school/add"
+    class="btn btn-primary btn-lg m-3 right-3 text-right fs-6"
+  >Add New School</a>
+
+</div>
+
+<div class="m-5">
+  <table class="table text-center">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">District</th>
+        <th scope="col">Category 1</th>
+        <th scope="col">Category 2</th>
+        <th scope="col">Category 3</th>
+        <th scope="col">Category 4</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each data}}
+        <tr>
+          <th scope="row">{{this.name}}</th>
+          <td>{{this.district}}</td>
+          <td>{{this.hssg}}</td>
+          <td>{{this.hsg}}</td>
+          <td>{{this.hsa}}</td>
+          <td>{{this.hss}}</td>
+          <td><a
+              href="school/view?id={{this._id}}"
+              type="button"
+              class="btn btn-info"
+            >Details</a>
+            <a
+              href="school/delete?id={{this._id}}"
+              type="button"
+              class="btn btn-danger"
+            >Delete</a></td>
+
+        </tr>
+      {{/each}}
+
+    </tbody>
+  </table>
+</div>

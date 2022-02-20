@@ -1,0 +1,58 @@
+{{#each data}}
+  <form action="item-result" method="post">
+    <input
+      type="text"
+      name="id"
+      value="{{this._id}}"
+      hidden
+      class="form-control"
+      aria-describedby="passwordHelpBlock"
+    />
+    <input
+      type="text"
+      name="itemId"
+      value="{{data.item}}"
+      hidden
+      class="form-control"
+      aria-describedby="passwordHelpBlock"
+    />
+    <label for="name" class="form-label mt-3">Name</label>
+    <input
+      type="text"
+      name="name"
+      readonly
+      value="{{this.name}}"
+      class="form-control"
+      aria-describedby="passwordHelpBlock"
+    />
+    <label for="school" class="form-label mt-3">School</label>
+    <input
+      type="text"
+      readonly
+      value="{{this.school}}"
+      name="school"
+      class="form-control"
+      aria-describedby="passwordHelpBlock"
+    />
+    <label for="grade" class="form-label mt-3">Grade</label>
+    <input
+      type="text"
+      name="grade"
+      class="form-control"
+      aria-describedby="passwordHelpBlock"
+    />
+    <label for="position" class="form-label mt-3">Position</label>
+    <input
+      type="text"
+      name="position"
+      class="form-control"
+      aria-describedby="passwordHelpBlock"
+    />
+
+    <input type="submit" value="Update" class="btn btn-primary mt-3" />
+  </form>
+{{/each}}
+<div id="passwordHelpBlock" class="form-text">Lorem ipsum dolor sit amet
+  consectetur adipisicing elit. Facilis optio vel reprehenderit vitae amet quia
+  fugiat quae, excepturi culpa doloribus.
+</div>
