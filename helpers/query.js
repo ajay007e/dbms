@@ -15,6 +15,58 @@ const incriment = (id) => {
 };
 
 module.exports = {
+  generateReport_01: (id) => {
+    return new Promise(async (resolve, reject) => {
+      let districtCount = await db
+        .get()
+        .collection(collection.DISTRICT_COLLECTION)
+        .count();
+      let schoolCount = await db
+        .get()
+        .collection(collection.SCHOOL_COLLECTION)
+        .count();
+      let studentCount = await db
+        .get()
+        .collection(collection.STUDENT_COLLECTION)
+        .count();
+      let itemCount = await db
+        .get()
+        .collection(collection.ITEM_COLLECTION)
+        .count();
+      let completedCount = await db
+        .get()
+        .collection(collection.ITEM_COLLECTION)
+        .count({ status: "Ended" });
+      let notStartedCount = await db
+        .get()
+        .collection(collection.ITEM_COLLECTION)
+        .count({ status: "Not Started" });
+      let startedCount = await db
+        .get()
+        .collection(collection.ITEM_COLLECTION)
+        .count({ status: "Started" });
+
+      resolve({
+        report:
+          "From " +
+          districtCount +
+          " districts, around " +
+          studentCount +
+          " students of different " +
+          schoolCount +
+          " schools are participating on " +
+          itemCount +
+          " different items . From these items, " +
+          notStartedCount +
+          " of them are not started," +
+          startedCount +
+          " of them are started and " +
+          completedCount +
+          " of them ended also.",
+      });
+    });
+  },
+
   addDistrict: (name, callback) => {
     name.point = 0;
     db.get()

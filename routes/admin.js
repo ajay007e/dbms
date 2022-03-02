@@ -4,9 +4,36 @@ const async = require("hbs/lib/async");
 const helper = require("../helpers/query");
 var router = express.Router();
 
+const PDFDocument = require("pdfkit");
+const fs = require("fs");
+
+const buildPdf = (data, dataCallback, endCallback) => {
+  const doc = new PDFDocument();
+  doc.on("data", dataCallback);
+  doc.on("end", endCallback);
+
+  doc.fontSize(25).text("Report", 250, 100);
+  doc.fontSize(10).text(data, 100, 150);
+  doc.end();
+};
+
 /* GET users listing. */
 router.get("/", function (req, res, next) {
   res.render("admin/index", { title: "Admin Panel", admin: true });
+});
+
+router.get("/report01", function (req, res, next) {
+  helper.generateReport_01().then((data) => {
+    const stream = res.writeHead(200, {
+      "Content-Type": "application/pdf",
+      "Content-Disposition": "attachment;filename=report.pdf",
+    });
+    buildPdf(
+      data.report,
+      (chunk) => stream.write(chunk),
+      () => stream.end()
+    );
+  });
 });
 
 router.get("/district", function (req, res, next) {
